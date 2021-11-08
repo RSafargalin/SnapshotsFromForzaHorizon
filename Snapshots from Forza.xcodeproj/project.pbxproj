@@ -1,0 +1,751 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 52;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FE00D18827397F4200F4439F /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE00D18727397F4200F4439F /* LaunchViewController.swift */; };
+		FE00D18B273981DF00F4439F /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE00D18A273981DF00F4439F /* UIImage.swift */; };
+		FE00D18D27398E5700F4439F /* NavigationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE00D18C27398E5700F4439F /* NavigationCenter.swift */; };
+		FE4BF6D2273548D500ABF673 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4BF6D1273548D500ABF673 /* AppDelegate.swift */; };
+		FE4BF6D4273548D500ABF673 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4BF6D3273548D500ABF673 /* SceneDelegate.swift */; };
+		FE4BF6DC273548D500ABF673 /* Snapshots_from_Forza.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FE4BF6DA273548D500ABF673 /* Snapshots_from_Forza.xcdatamodeld */; };
+		FE4BF6DE273548D600ABF673 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE4BF6DD273548D600ABF673 /* Assets.xcassets */; };
+		FE4BF6E1273548D600ABF673 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE4BF6DF273548D600ABF673 /* LaunchScreen.storyboard */; };
+		FE4BF6EC273548D600ABF673 /* Snapshots_from_ForzaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4BF6EB273548D600ABF673 /* Snapshots_from_ForzaTests.swift */; };
+		FE4BF6F7273548D600ABF673 /* Snapshots_from_ForzaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4BF6F6273548D600ABF673 /* Snapshots_from_ForzaUITests.swift */; };
+		FE4BF70B27354ACF00ABF673 /* CarsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4BF70A27354ACF00ABF673 /* CarsViewController.swift */; };
+		FE4BF70E27354BC100ABF673 /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = FE4BF70D27354BC100ABF673 /* AlamofireImage */; };
+		FE4BF71127354BD300ABF673 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = FE4BF71027354BD300ABF673 /* Alamofire */; };
+		FE4BF71427354BE600ABF673 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4BF71327354BE600ABF673 /* NetworkManager.swift */; };
+		FE4BF71727354C8800ABF673 /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4BF71627354C8800ABF673 /* Car.swift */; };
+		FE4BF71927354D7200ABF673 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4BF71827354D7200ABF673 /* Constants.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FE4BF6E8273548D600ABF673 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FE4BF6C6273548D500ABF673 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FE4BF6CD273548D500ABF673;
+			remoteInfo = "Snapshots from Forza";
+		};
+		FE4BF6F3273548D600ABF673 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FE4BF6C6273548D500ABF673 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FE4BF6CD273548D500ABF673;
+			remoteInfo = "Snapshots from Forza";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		FE00D18727397F4200F4439F /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
+		FE00D18A273981DF00F4439F /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
+		FE00D18C27398E5700F4439F /* NavigationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCenter.swift; sourceTree = "<group>"; };
+		FE4BF6CE273548D500ABF673 /* Snapshots from Forza.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Snapshots from Forza.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE4BF6D1273548D500ABF673 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		FE4BF6D3273548D500ABF673 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		FE4BF6DB273548D500ABF673 /* Snapshots_from_Forza.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Snapshots_from_Forza.xcdatamodel; sourceTree = "<group>"; };
+		FE4BF6DD273548D600ABF673 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FE4BF6E0273548D600ABF673 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		FE4BF6E2273548D600ABF673 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FE4BF6E7273548D600ABF673 /* Snapshots from ForzaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Snapshots from ForzaTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE4BF6EB273548D600ABF673 /* Snapshots_from_ForzaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Snapshots_from_ForzaTests.swift; sourceTree = "<group>"; };
+		FE4BF6ED273548D600ABF673 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FE4BF6F2273548D600ABF673 /* Snapshots from ForzaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Snapshots from ForzaUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE4BF6F6273548D600ABF673 /* Snapshots_from_ForzaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Snapshots_from_ForzaUITests.swift; sourceTree = "<group>"; };
+		FE4BF6F8273548D600ABF673 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FE4BF70A27354ACF00ABF673 /* CarsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarsViewController.swift; sourceTree = "<group>"; };
+		FE4BF71327354BE600ABF673 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		FE4BF71627354C8800ABF673 /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
+		FE4BF71827354D7200ABF673 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FE4BF6CB273548D500ABF673 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FE4BF70E27354BC100ABF673 /* AlamofireImage in Frameworks */,
+				FE4BF71127354BD300ABF673 /* Alamofire in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE4BF6E4273548D600ABF673 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE4BF6EF273548D600ABF673 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FE00D18627397F2400F4439F /* Launch */ = {
+			isa = PBXGroup;
+			children = (
+				FE00D18727397F4200F4439F /* LaunchViewController.swift */,
+			);
+			path = Launch;
+			sourceTree = "<group>";
+		};
+		FE00D189273981D700F4439F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FE00D18A273981DF00F4439F /* UIImage.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		FE4BF6C5273548D500ABF673 = {
+			isa = PBXGroup;
+			children = (
+				FE4BF6D0273548D500ABF673 /* Snapshots from Forza */,
+				FE4BF6EA273548D600ABF673 /* Snapshots from ForzaTests */,
+				FE4BF6F5273548D600ABF673 /* Snapshots from ForzaUITests */,
+				FE4BF6CF273548D500ABF673 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FE4BF6CF273548D500ABF673 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FE4BF6CE273548D500ABF673 /* Snapshots from Forza.app */,
+				FE4BF6E7273548D600ABF673 /* Snapshots from ForzaTests.xctest */,
+				FE4BF6F2273548D600ABF673 /* Snapshots from ForzaUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FE4BF6D0273548D500ABF673 /* Snapshots from Forza */ = {
+			isa = PBXGroup;
+			children = (
+				FE4BF70827354A3C00ABF673 /* Resources */,
+				FE4BF7072735498A00ABF673 /* Environments */,
+				FE4BF7052735492A00ABF673 /* Core */,
+				FE4BF7042735492200ABF673 /* App */,
+				FE4BF6DA273548D500ABF673 /* Snapshots_from_Forza.xcdatamodeld */,
+			);
+			path = "Snapshots from Forza";
+			sourceTree = "<group>";
+		};
+		FE4BF6EA273548D600ABF673 /* Snapshots from ForzaTests */ = {
+			isa = PBXGroup;
+			children = (
+				FE4BF6EB273548D600ABF673 /* Snapshots_from_ForzaTests.swift */,
+				FE4BF6ED273548D600ABF673 /* Info.plist */,
+			);
+			path = "Snapshots from ForzaTests";
+			sourceTree = "<group>";
+		};
+		FE4BF6F5273548D600ABF673 /* Snapshots from ForzaUITests */ = {
+			isa = PBXGroup;
+			children = (
+				FE4BF6F6273548D600ABF673 /* Snapshots_from_ForzaUITests.swift */,
+				FE4BF6F8273548D600ABF673 /* Info.plist */,
+			);
+			path = "Snapshots from ForzaUITests";
+			sourceTree = "<group>";
+		};
+		FE4BF7042735492200ABF673 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				FE4BF6D1273548D500ABF673 /* AppDelegate.swift */,
+				FE4BF6D3273548D500ABF673 /* SceneDelegate.swift */,
+				FE4BF7062735493000ABF673 /* Flows */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		FE4BF7052735492A00ABF673 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				FE00D189273981D700F4439F /* Extensions */,
+				FE4BF71527354C7700ABF673 /* Entities */,
+				FE4BF71227354BD800ABF673 /* Managers & etc */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		FE4BF7062735493000ABF673 /* Flows */ = {
+			isa = PBXGroup;
+			children = (
+				FE00D18627397F2400F4439F /* Launch */,
+				FE4BF70927354A7B00ABF673 /* Cars */,
+			);
+			path = Flows;
+			sourceTree = "<group>";
+		};
+		FE4BF7072735498A00ABF673 /* Environments */ = {
+			isa = PBXGroup;
+			children = (
+				FE4BF6E2273548D600ABF673 /* Info.plist */,
+				FE4BF71827354D7200ABF673 /* Constants.swift */,
+			);
+			path = Environments;
+			sourceTree = "<group>";
+		};
+		FE4BF70827354A3C00ABF673 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FE4BF6DD273548D600ABF673 /* Assets.xcassets */,
+				FE4BF6DF273548D600ABF673 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		FE4BF70927354A7B00ABF673 /* Cars */ = {
+			isa = PBXGroup;
+			children = (
+				FE4BF70A27354ACF00ABF673 /* CarsViewController.swift */,
+			);
+			path = Cars;
+			sourceTree = "<group>";
+		};
+		FE4BF71227354BD800ABF673 /* Managers & etc */ = {
+			isa = PBXGroup;
+			children = (
+				FE4BF71327354BE600ABF673 /* NetworkManager.swift */,
+				FE00D18C27398E5700F4439F /* NavigationCenter.swift */,
+			);
+			path = "Managers & etc";
+			sourceTree = "<group>";
+		};
+		FE4BF71527354C7700ABF673 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				FE4BF71627354C8800ABF673 /* Car.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FE4BF6CD273548D500ABF673 /* Snapshots from Forza */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FE4BF6FB273548D600ABF673 /* Build configuration list for PBXNativeTarget "Snapshots from Forza" */;
+			buildPhases = (
+				FE4BF6CA273548D500ABF673 /* Sources */,
+				FE4BF6CB273548D500ABF673 /* Frameworks */,
+				FE4BF6CC273548D500ABF673 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Snapshots from Forza";
+			packageProductDependencies = (
+				FE4BF70D27354BC100ABF673 /* AlamofireImage */,
+				FE4BF71027354BD300ABF673 /* Alamofire */,
+			);
+			productName = "Snapshots from Forza";
+			productReference = FE4BF6CE273548D500ABF673 /* Snapshots from Forza.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FE4BF6E6273548D600ABF673 /* Snapshots from ForzaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FE4BF6FE273548D600ABF673 /* Build configuration list for PBXNativeTarget "Snapshots from ForzaTests" */;
+			buildPhases = (
+				FE4BF6E3273548D600ABF673 /* Sources */,
+				FE4BF6E4273548D600ABF673 /* Frameworks */,
+				FE4BF6E5273548D600ABF673 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FE4BF6E9273548D600ABF673 /* PBXTargetDependency */,
+			);
+			name = "Snapshots from ForzaTests";
+			productName = "Snapshots from ForzaTests";
+			productReference = FE4BF6E7273548D600ABF673 /* Snapshots from ForzaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		FE4BF6F1273548D600ABF673 /* Snapshots from ForzaUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FE4BF701273548D600ABF673 /* Build configuration list for PBXNativeTarget "Snapshots from ForzaUITests" */;
+			buildPhases = (
+				FE4BF6EE273548D600ABF673 /* Sources */,
+				FE4BF6EF273548D600ABF673 /* Frameworks */,
+				FE4BF6F0273548D600ABF673 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FE4BF6F4273548D600ABF673 /* PBXTargetDependency */,
+			);
+			name = "Snapshots from ForzaUITests";
+			productName = "Snapshots from ForzaUITests";
+			productReference = FE4BF6F2273548D600ABF673 /* Snapshots from ForzaUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FE4BF6C6273548D500ABF673 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1250;
+				LastUpgradeCheck = 1250;
+				TargetAttributes = {
+					FE4BF6CD273548D500ABF673 = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
+					FE4BF6E6273548D600ABF673 = {
+						CreatedOnToolsVersion = 12.5.1;
+						TestTargetID = FE4BF6CD273548D500ABF673;
+					};
+					FE4BF6F1273548D600ABF673 = {
+						CreatedOnToolsVersion = 12.5.1;
+						TestTargetID = FE4BF6CD273548D500ABF673;
+					};
+				};
+			};
+			buildConfigurationList = FE4BF6C9273548D500ABF673 /* Build configuration list for PBXProject "Snapshots from Forza" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FE4BF6C5273548D500ABF673;
+			packageReferences = (
+				FE4BF70C27354BC100ABF673 /* XCRemoteSwiftPackageReference "AlamofireImage" */,
+				FE4BF70F27354BD300ABF673 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
+			productRefGroup = FE4BF6CF273548D500ABF673 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FE4BF6CD273548D500ABF673 /* Snapshots from Forza */,
+				FE4BF6E6273548D600ABF673 /* Snapshots from ForzaTests */,
+				FE4BF6F1273548D600ABF673 /* Snapshots from ForzaUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FE4BF6CC273548D500ABF673 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FE4BF6E1273548D600ABF673 /* LaunchScreen.storyboard in Resources */,
+				FE4BF6DE273548D600ABF673 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE4BF6E5273548D600ABF673 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE4BF6F0273548D600ABF673 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FE4BF6CA273548D500ABF673 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FE4BF6DC273548D500ABF673 /* Snapshots_from_Forza.xcdatamodeld in Sources */,
+				FE4BF6D2273548D500ABF673 /* AppDelegate.swift in Sources */,
+				FE00D18D27398E5700F4439F /* NavigationCenter.swift in Sources */,
+				FE4BF71727354C8800ABF673 /* Car.swift in Sources */,
+				FE4BF71427354BE600ABF673 /* NetworkManager.swift in Sources */,
+				FE4BF71927354D7200ABF673 /* Constants.swift in Sources */,
+				FE4BF6D4273548D500ABF673 /* SceneDelegate.swift in Sources */,
+				FE00D18B273981DF00F4439F /* UIImage.swift in Sources */,
+				FE4BF70B27354ACF00ABF673 /* CarsViewController.swift in Sources */,
+				FE00D18827397F4200F4439F /* LaunchViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE4BF6E3273548D600ABF673 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FE4BF6EC273548D600ABF673 /* Snapshots_from_ForzaTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE4BF6EE273548D600ABF673 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FE4BF6F7273548D600ABF673 /* Snapshots_from_ForzaUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FE4BF6E9273548D600ABF673 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FE4BF6CD273548D500ABF673 /* Snapshots from Forza */;
+			targetProxy = FE4BF6E8273548D600ABF673 /* PBXContainerItemProxy */;
+		};
+		FE4BF6F4273548D600ABF673 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FE4BF6CD273548D500ABF673 /* Snapshots from Forza */;
+			targetProxy = FE4BF6F3273548D600ABF673 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		FE4BF6DF273548D600ABF673 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FE4BF6E0273548D600ABF673 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FE4BF6F9273548D600ABF673 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		FE4BF6FA273548D600ABF673 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FE4BF6FC273548D600ABF673 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = G7624CK49F;
+				INFOPLIST_FILE = "Snapshots from Forza/Environments/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "RSafargalin.Snapshots-from-Forza";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FE4BF6FD273548D600ABF673 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = G7624CK49F;
+				INFOPLIST_FILE = "Snapshots from Forza/Environments/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "RSafargalin.Snapshots-from-Forza";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		FE4BF6FF273548D600ABF673 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = G7624CK49F;
+				INFOPLIST_FILE = "Snapshots from ForzaTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "RSafargalin.Snapshots-from-ForzaTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Snapshots from Forza.app/Snapshots from Forza";
+			};
+			name = Debug;
+		};
+		FE4BF700273548D600ABF673 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = G7624CK49F;
+				INFOPLIST_FILE = "Snapshots from ForzaTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "RSafargalin.Snapshots-from-ForzaTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Snapshots from Forza.app/Snapshots from Forza";
+			};
+			name = Release;
+		};
+		FE4BF702273548D600ABF673 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = G7624CK49F;
+				INFOPLIST_FILE = "Snapshots from ForzaUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "RSafargalin.Snapshots-from-ForzaUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Snapshots from Forza";
+			};
+			name = Debug;
+		};
+		FE4BF703273548D600ABF673 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = G7624CK49F;
+				INFOPLIST_FILE = "Snapshots from ForzaUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "RSafargalin.Snapshots-from-ForzaUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Snapshots from Forza";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FE4BF6C9273548D500ABF673 /* Build configuration list for PBXProject "Snapshots from Forza" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FE4BF6F9273548D600ABF673 /* Debug */,
+				FE4BF6FA273548D600ABF673 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FE4BF6FB273548D600ABF673 /* Build configuration list for PBXNativeTarget "Snapshots from Forza" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FE4BF6FC273548D600ABF673 /* Debug */,
+				FE4BF6FD273548D600ABF673 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FE4BF6FE273548D600ABF673 /* Build configuration list for PBXNativeTarget "Snapshots from ForzaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FE4BF6FF273548D600ABF673 /* Debug */,
+				FE4BF700273548D600ABF673 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FE4BF701273548D600ABF673 /* Build configuration list for PBXNativeTarget "Snapshots from ForzaUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FE4BF702273548D600ABF673 /* Debug */,
+				FE4BF703273548D600ABF673 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FE4BF70C27354BC100ABF673 /* XCRemoteSwiftPackageReference "AlamofireImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/AlamofireImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.2.0;
+			};
+		};
+		FE4BF70F27354BD300ABF673 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.4.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FE4BF70D27354BC100ABF673 /* AlamofireImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FE4BF70C27354BC100ABF673 /* XCRemoteSwiftPackageReference "AlamofireImage" */;
+			productName = AlamofireImage;
+		};
+		FE4BF71027354BD300ABF673 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FE4BF70F27354BD300ABF673 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		FE4BF6DA273548D500ABF673 /* Snapshots_from_Forza.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FE4BF6DB273548D500ABF673 /* Snapshots_from_Forza.xcdatamodel */,
+			);
+			currentVersion = FE4BF6DB273548D500ABF673 /* Snapshots_from_Forza.xcdatamodel */;
+			path = Snapshots_from_Forza.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = FE4BF6C6273548D500ABF673 /* Project object */;
+}
