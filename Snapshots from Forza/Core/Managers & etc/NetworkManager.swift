@@ -28,8 +28,13 @@ final class NetworkManagerImpl: NetworkManager {
         guard let imageURL = try? await fetchRandomImageURL(),
               let image = try? await fetchImage(from: imageURL)
         else { return UIImage() }
-        
+        print(imageURL)
         return image
+    }
+    
+    // TODO: Метод для получения разных изображений
+    func fetchCarsImages() async -> [UIImage] {
+        return [UIImage()]
     }
     
     // MARK: Private methods

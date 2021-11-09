@@ -10,6 +10,9 @@
 		FE00D18827397F4200F4439F /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE00D18727397F4200F4439F /* LaunchViewController.swift */; };
 		FE00D18B273981DF00F4439F /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE00D18A273981DF00F4439F /* UIImage.swift */; };
 		FE00D18D27398E5700F4439F /* NavigationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE00D18C27398E5700F4439F /* NavigationCenter.swift */; };
+		FE00D192273AB86900F4439F /* LaunchDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE00D191273AB86900F4439F /* LaunchDataStore.swift */; };
+		FE00D194273ABA2500F4439F /* CarsDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE00D193273ABA2500F4439F /* CarsDataStore.swift */; };
+		FE00D197273ABB2C00F4439F /* CarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE00D196273ABB2C00F4439F /* CarCell.swift */; };
 		FE4BF6D2273548D500ABF673 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4BF6D1273548D500ABF673 /* AppDelegate.swift */; };
 		FE4BF6D4273548D500ABF673 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4BF6D3273548D500ABF673 /* SceneDelegate.swift */; };
 		FE4BF6DC273548D500ABF673 /* Snapshots_from_Forza.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FE4BF6DA273548D500ABF673 /* Snapshots_from_Forza.xcdatamodeld */; };
@@ -46,6 +49,9 @@
 		FE00D18727397F4200F4439F /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		FE00D18A273981DF00F4439F /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		FE00D18C27398E5700F4439F /* NavigationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCenter.swift; sourceTree = "<group>"; };
+		FE00D191273AB86900F4439F /* LaunchDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchDataStore.swift; sourceTree = "<group>"; };
+		FE00D193273ABA2500F4439F /* CarsDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarsDataStore.swift; sourceTree = "<group>"; };
+		FE00D196273ABB2C00F4439F /* CarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarCell.swift; sourceTree = "<group>"; };
 		FE4BF6CE273548D500ABF673 /* Snapshots from Forza.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Snapshots from Forza.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE4BF6D1273548D500ABF673 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FE4BF6D3273548D500ABF673 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -96,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				FE00D18727397F4200F4439F /* LaunchViewController.swift */,
+				FE00D191273AB86900F4439F /* LaunchDataStore.swift */,
 			);
 			path = Launch;
 			sourceTree = "<group>";
@@ -106,6 +113,14 @@
 				FE00D18A273981DF00F4439F /* UIImage.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		FE00D195273ABB2200F4439F /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				FE00D196273ABB2C00F4439F /* CarCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		FE4BF6C5273548D500ABF673 = {
@@ -208,7 +223,9 @@
 		FE4BF70927354A7B00ABF673 /* Cars */ = {
 			isa = PBXGroup;
 			children = (
+				FE00D195273ABB2200F4439F /* Cell */,
 				FE4BF70A27354ACF00ABF673 /* CarsViewController.swift */,
+				FE00D193273ABA2500F4439F /* CarsDataStore.swift */,
 			);
 			path = Cars;
 			sourceTree = "<group>";
@@ -367,11 +384,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE00D197273ABB2C00F4439F /* CarCell.swift in Sources */,
 				FE4BF6DC273548D500ABF673 /* Snapshots_from_Forza.xcdatamodeld in Sources */,
+				FE00D192273AB86900F4439F /* LaunchDataStore.swift in Sources */,
 				FE4BF6D2273548D500ABF673 /* AppDelegate.swift in Sources */,
 				FE00D18D27398E5700F4439F /* NavigationCenter.swift in Sources */,
 				FE4BF71727354C8800ABF673 /* Car.swift in Sources */,
 				FE4BF71427354BE600ABF673 /* NetworkManager.swift in Sources */,
+				FE00D194273ABA2500F4439F /* CarsDataStore.swift in Sources */,
 				FE4BF71927354D7200ABF673 /* Constants.swift in Sources */,
 				FE4BF6D4273548D500ABF673 /* SceneDelegate.swift in Sources */,
 				FE00D18B273981DF00F4439F /* UIImage.swift in Sources */,

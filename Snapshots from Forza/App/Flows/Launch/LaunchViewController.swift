@@ -12,17 +12,14 @@ final class LaunchViewController: UIViewController {
     
     // MARK: - Properties
     
+    // MARK: – Public
+    
+    var dataStore: LaunchDataStore = LaunchDataStoreImpl()
+    
     // MARK: – Private
     
     private let networkManager: NetworkManager = NetworkManagerImpl()
     private var router: LaunchScreenRouting = NavigationCenter.main
-    
-    private var images: [UIImage] = [] {
-        didSet {
-            print(Date(), images.count)
-            router.routeTo()
-        }
-    }
     
     // MARK: - Views
     
@@ -64,14 +61,20 @@ final class LaunchViewController: UIViewController {
         
         router.launchViewController = self
         
-        Task {
-            images = await fetchImages()
-        }
+        loadingImages()
     }
     
     // MARK: - Private methods
     
-    
+    private func loadingImages() {
+        Task {
+            dataStore.images = await fetchImages()
+            DispatchQueue.main.async {
+                self.router.routeTo()
+            }
+            
+        }
+    }
     
     // FIXME: Вынести в отдельный метод в NetworkManager
     private func fetchImages() async -> [UIImage] {

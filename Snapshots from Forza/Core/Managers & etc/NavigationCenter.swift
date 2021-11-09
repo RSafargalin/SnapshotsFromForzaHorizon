@@ -47,6 +47,11 @@ class NavigationCenter: LaunchScreenRouting {
     
     func routeTo() {
         let viewController = CarsViewController()
+        
+        if let images = launchViewController?.dataStore.images {
+            viewController.dataStore.images = images
+        }
+        
         try? replaceRootViewController(with: viewController)
     }
     
