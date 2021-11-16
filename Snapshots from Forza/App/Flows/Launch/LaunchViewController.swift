@@ -68,7 +68,7 @@ final class LaunchViewController: UIViewController {
     
     private func loadingImages() {
         Task {
-            dataStore.images = await fetchImages()
+            dataStore.images = await networkManager.fetchCarsImages()
             DispatchQueue.main.async {
                 self.router.routeTo()
             }
