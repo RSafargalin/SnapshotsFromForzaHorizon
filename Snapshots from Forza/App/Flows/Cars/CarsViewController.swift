@@ -15,10 +15,17 @@ final class CarsViewController: UICollectionViewController {
     lazy var dataStore: CarsDataStore = CarsDataStoreImpl(owner: self)
     
     private let networkManager: NetworkManager = NetworkManagerImpl()
+    private var isLoading: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        
+        self.collectionView.prefetchDataSource = self
+        
+        Task {
+            print(await networkManager.get(count: 16))
+        }
     }
     
     init() {
@@ -74,5 +81,23 @@ extension CarsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     }
+    
+}
+
+extension CarsViewController: UICollectionViewDataSourcePrefetching {
+    
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        if indexPaths.count <= 10,
+           !isLoading {
+            Task {
+                isLoading = true
+                dataStore.images.append(contentsOf: await networkManager.fetchCarsImages())
+                isLoading = false
+//                collectionView.reloadData()
+            }
+            
+        }
+    }
+    
     
 }
