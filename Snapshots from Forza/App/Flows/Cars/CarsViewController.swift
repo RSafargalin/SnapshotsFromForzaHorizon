@@ -14,8 +14,12 @@ final class CarsViewController: UICollectionViewController {
     
     lazy var dataStore: CarsDataStore = CarsDataStoreImpl(owner: self)
     
+    // MARK: - Private properties
+    
     private let core: CarsScreenCore = Core.main
     private var isLoading: Bool = false
+    
+    // MARK: - Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +27,8 @@ final class CarsViewController: UICollectionViewController {
         configureUI()
     }
     
+    // MARK: - Init
+    // TODO: Разобраться с инициализацией. Where DI, man?
     init() {
         let layout = UICollectionViewFlowLayout()
         super.init(collectionViewLayout: layout)
@@ -32,6 +38,8 @@ final class CarsViewController: UICollectionViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Private methods
     
     private func configureUI() {
         view.backgroundColor = .systemBackground

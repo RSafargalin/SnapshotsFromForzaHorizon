@@ -23,7 +23,7 @@ final class CarCellImpl: UICollectionViewCell, CarCell {
     
     // MARK: – Public
     
-    static var identifier: String = "CarCell"
+    static let identifier: String = "CarCell"
     
     // MARK: – Private
     

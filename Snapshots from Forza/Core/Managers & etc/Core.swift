@@ -51,7 +51,7 @@ class Core {
     /// - Returns: Возвращает объект соответствующий классу **UIWindow**
     func start(using windowScene: UIWindowScene) -> UIWindow? {
         mainWindow = UIWindow(windowScene: windowScene)
-        mainWindow?.rootViewController = LaunchViewController()
+        mainWindow?.rootViewController = LaunchViewController(with: LaunchDataStoreImpl())
         return mainWindow
     }
     
@@ -81,7 +81,6 @@ class Core {
 
 extension Core: LaunchScreenCore {
     
-    // TODO: Вынести название VC в расширение
     func start() {
         let viewController = CarsViewController()
         
@@ -93,7 +92,7 @@ extension Core: LaunchScreenCore {
         let tabBarViewController = UITabBarController()
         tabBarViewController.setViewControllers([navController], animated: false)
         
-        viewController.title = "Cars"
+        viewController.title = Constant.Screens.Cars.title
         navController.tabBarItem.image = UIImage.Screens.cars
         tabBarViewController.tabBar.tintColor = .purple
         try? replaceRootViewController(with: tabBarViewController)

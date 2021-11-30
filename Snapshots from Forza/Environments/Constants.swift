@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 enum Constant {
     
@@ -17,8 +18,28 @@ enum Constant {
             static let maxActiveTaskOnGroup: Int = 10
             static let maxUniqueImagesCount: Int = 14
             
+            enum CacheSettings {
+                
+                static let maxUsingMemory: UInt64 = 307_200_000
+                static let preferredMemoryUsage: UInt64 = 256_000_000
+                
+            }
         }
         
+    }
+    
+    enum Screens {
+        enum Cars {
+            static let title = "Cars"
+        }
+        
+        enum Launch {
+            enum FontSettings {
+                enum Sizes {
+                    static let description: CGFloat = 14
+                }
+            }
+        }
     }
     
 }

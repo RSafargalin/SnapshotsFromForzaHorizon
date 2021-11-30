@@ -9,13 +9,13 @@ import Foundation
 import UIKit
 
 // TODO: Прикрутить документацию
-protocol LaunchDataStore {
+protocol LaunchDataStore: AnyObject {
     
     var images: [String] { get set }
     
 }
 
-struct LaunchDataStoreImpl: LaunchDataStore {
+class LaunchDataStoreImpl: LaunchDataStore {
     
     var images: [String] = []
     

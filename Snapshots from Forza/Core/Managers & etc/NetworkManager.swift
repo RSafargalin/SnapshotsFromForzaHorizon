@@ -65,19 +65,20 @@ actor OptionalsImagesUrls {
     
 }
 
-// TODO: Выбросить константы в отдельный файл
 // TODO: Реализовать настройку размера кэша изображений
 final class NetworkManagerImpl: NetworkManager {
     
     // MARK: Typealias
     
     private typealias NetworkConstants = Constant.Manager.Network
-    private let imageCache = AutoPurgingImageCache(memoryCapacity: 307_200_000, preferredMemoryUsageAfterPurge: 256_000_000)
-   
+    private typealias CacheSettings = Constant.Manager.Network.CacheSettings
+    // MARK: Properties
     
+    private let imageCache = AutoPurgingImageCache(memoryCapacity: CacheSettings.maxUsingMemory,
+                                                   preferredMemoryUsageAfterPurge: CacheSettings.preferredMemoryUsage)
     private var imagesURL = [String]()
     
-    // MARK: Properties
+    
     
     // MARK: Public methods
     
@@ -150,7 +151,6 @@ final class NetworkManagerImpl: NetworkManager {
         })
     }
     
-    // TODO: Добавить статику
     func getImage(for urlString: String) -> UIImage? {
         if let image = imageCache.image(withIdentifier: urlString) {
             return image
@@ -158,7 +158,7 @@ final class NetworkManagerImpl: NetworkManager {
             Task {
                 let _ = try? await fetchImage(from: urlString)
             }
-            return UIImage(named: "logo")
+            return UIImage.logo
         }
     }
 
