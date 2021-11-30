@@ -8,14 +8,15 @@
 import Foundation
 import UIKit
 
+// TODO: Прикрутить документацию
 protocol LaunchDataStore {
     
-    var images: [UIImage] { get set }
+    var images: [String] { get set }
     
 }
 
 struct LaunchDataStoreImpl: LaunchDataStore {
     
-    var images: [UIImage] = []
+    var images: [String] = []
     
 }

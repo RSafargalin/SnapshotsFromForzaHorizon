@@ -8,17 +8,18 @@
 import Foundation
 import UIKit
 
+// TODO: Прикрутить документацию
 protocol CarsDataStore {
     
     var owner: CarsViewController? { get set }
     
-    var images: [UIImage] { get set }
+    var images: [String] { get set }
     
 }
 
 struct CarsDataStoreImpl: CarsDataStore {
     
-    var images: [UIImage] = [] {
+    var images: [String] = [] {
         didSet {
             owner?.collectionView.reloadData()
         }

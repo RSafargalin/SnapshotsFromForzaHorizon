@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+// TODO: Прикрутить документацию
 protocol CarCell: UICollectionViewCell {
     
     static var identifier: String { get }

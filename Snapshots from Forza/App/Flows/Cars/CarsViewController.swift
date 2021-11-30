@@ -14,24 +14,19 @@ final class CarsViewController: UICollectionViewController {
     
     lazy var dataStore: CarsDataStore = CarsDataStoreImpl(owner: self)
     
-    private let networkManager: NetworkManager = NetworkManagerImpl()
+    private let core: CarsScreenCore = Core.main
     private var isLoading: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureCollectionView()
         configureUI()
-        
-        self.collectionView.prefetchDataSource = self
-        
-        Task {
-            print(await networkManager.get(count: 16))
-        }
     }
     
     init() {
         let layout = UICollectionViewFlowLayout()
         super.init(collectionViewLayout: layout)
-        collectionView.register(CarCellImpl.self, forCellWithReuseIdentifier: CarCellImpl.identifier)
+        
     }
     
     required init?(coder: NSCoder) {
@@ -42,9 +37,9 @@ final class CarsViewController: UICollectionViewController {
         view.backgroundColor = .systemBackground
     }
     
-    //
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+    private func configureCollectionView() {
+        self.collectionView.prefetchDataSource = self
+        collectionView.register(CarCellImpl.self, forCellWithReuseIdentifier: CarCellImpl.identifier)
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -61,7 +56,8 @@ final class CarsViewController: UICollectionViewController {
         guard index >= dataStore.images.startIndex && index <= dataStore.images.endIndex
         else { return UICollectionViewCell() }
         
-        let image = dataStore.images[index]
+        let identifier = dataStore.images[index]
+        let image = core.fetchImage(with: identifier)
         
         cell.configure(from: image)
         
@@ -72,6 +68,7 @@ final class CarsViewController: UICollectionViewController {
 
 extension CarsViewController: UICollectionViewDelegateFlowLayout {
     
+    // TODO: Заменить цифры на константы
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = UIScreen.main.bounds.width - 20
         let height = width / 1.8333
@@ -79,25 +76,26 @@ extension CarsViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        return UIEdgeInsets(top: 10,
+                            left: 10,
+                            bottom: 10,
+                            right: 10)
     }
     
 }
 
 extension CarsViewController: UICollectionViewDataSourcePrefetching {
     
+    // TODO: Вынести логику ограничения запросов в Core
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-        if indexPaths.count <= 10,
+        guard let indexPath = indexPaths.first else { return }
+        if (dataStore.images.count - indexPath.item) <= 10,
            !isLoading {
-            Task {
-                isLoading = true
-                dataStore.images.append(contentsOf: await networkManager.fetchCarsImages())
-                isLoading = false
-//                collectionView.reloadData()
-            }
-            
+                Task {
+                    isLoading = true
+                    dataStore.images.append(contentsOf: await core.downloadNextImagesPart())
+                    isLoading = false
+                }
         }
     }
-    
-    
 }

@@ -14,6 +14,8 @@ enum Constant {
         enum Network {
             
             static let basicURL: String = "https://forza-api.tk"
+            static let maxActiveTaskOnGroup: Int = 10
+            static let maxUniqueImagesCount: Int = 14
             
         }
         

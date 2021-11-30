@@ -19,7 +19,7 @@ final class LaunchViewController: UIViewController {
     // MARK: – Private
     
     private let networkManager: NetworkManager = NetworkManagerImpl()
-    private var router: LaunchScreenRouting = NavigationCenter.main
+    private var core: LaunchScreenCore = Core.main
     
     // MARK: - Views
     
@@ -33,6 +33,7 @@ final class LaunchViewController: UIViewController {
         return imageView
     }()
     
+    // TODO: Добавить локализацию
     private lazy var descriptionLabel: UILabel = {
         let label: UILabel = UILabel()
         label.numberOfLines = 0
@@ -59,7 +60,7 @@ final class LaunchViewController: UIViewController {
         super.viewDidLoad()
         configureUI()
         
-        router.launchViewController = self
+        core.launchViewController = self
         
         loadingImages()
     }
@@ -68,36 +69,12 @@ final class LaunchViewController: UIViewController {
     
     private func loadingImages() {
         Task {
-            dataStore.images = await networkManager.fetchCarsImages()
+            await core.downloadUniqueImages()
+            dataStore.images = await core.downloadFirstImagesPart()
             DispatchQueue.main.async {
-                self.router.routeTo()
-            }
-            
-        }
-    }
-    
-    // FIXME: Вынести в отдельный метод в NetworkManager
-    private func fetchImages() async -> [UIImage] {
-        
-        actor ImagesStack {
-            var images: [UIImage] = []
-            
-            func append(_ image: UIImage) {
-                images.append(image)
+                self.core.start()
             }
         }
-        
-        let imagesStack: ImagesStack = .init()
-        
-        let task = Task { () -> [UIImage] in
-            for _ in 0...19 {
-                let image = await networkManager.fetchRandomCarImage()
-                await imagesStack.append(image)
-            }
-            return await imagesStack.images
-        }
-        
-        return await task.value
     }
     
     // MARK: – UI
