@@ -10,14 +10,14 @@ import UIKit
 import Alamofire
 import AlamofireImage
 
+// TODO: Прикрутить документацию
 protocol NetworkManager: AnyObject {
     
-    func fetchRandomCarImage() async -> UIImage
+    func getImage(for urlString: String) -> UIImage? 
     
-    func fetchCarsImages() async -> [UIImage]
+    func fetchRandomCarImages() async -> [String]
     
-    func get(count: Int) async -> [String]
-    
+    func downloadUniqueImages() async
 }
 
 enum NetworkManagerError: Error {
@@ -41,72 +41,125 @@ actor ImagesURLStack {
     }
 }
 
+actor OptionalsImagesUrls {
+    var urls: [String?] = []
+    var taskCount: Int = 0
+    
+    func append(_ urlString: String?) {
+        urls.append(urlString)
+    }
+    
+    func incrementTaskCount() {
+        taskCount += 1
+    }
+    
+    func decrementTaskCount() {
+        if taskCount >= 1 {
+            taskCount -= 1
+        }
+    }
+    
+    func fetchURLs() -> [String] {
+        return urls.compactMap({$0})
+    }
+    
+}
+
+// TODO: Реализовать настройку размера кэша изображений
 final class NetworkManagerImpl: NetworkManager {
     
     // MARK: Typealias
     
     private typealias NetworkConstants = Constant.Manager.Network
-    private let imageCacher = ResponseCacher(behavior: .cache)
-    private let imageCache = AutoPurgingImageCache()
+    private typealias CacheSettings = Constant.Manager.Network.CacheSettings
+    // MARK: Properties
     
+    private let imageCache = AutoPurgingImageCache(memoryCapacity: CacheSettings.maxUsingMemory,
+                                                   preferredMemoryUsageAfterPurge: CacheSettings.preferredMemoryUsage)
     private var imagesURL = [String]()
     
-    // MARK: Properties
+    
     
     // MARK: Public methods
     
-    func fetchRandomCarImage() async -> UIImage {
-        guard let imageURL = try? await fetchRandomImageURL(),
-              let image = try? await fetchImage(from: imageURL)
-        else { return UIImage() }
-        return image
+    func downloadUniqueImages() async {
+        let imagesURLs = await fetchUniqueImagesURLs()
+        await fetchUniqueImages(from: imagesURLs)
     }
     
-    // TODO: Метод для получения разных изображений
-    func fetchCarsImages() async -> [UIImage] {
-        let imagesStack: ImagesStack = .init()
-        
-        let task = Task { () -> [UIImage] in
-            for _ in 0...19 {
-                let image = await fetchRandomCarImage()
-                await imagesStack.append(image)
-            }
-            return await imagesStack.images
-        }
-        
-        return await task.value
-    }
-    
-    // TODO: Метод получения уникальных изображений. Рефакторинг+
-    func get(count: Int) async -> [String] {
-        let stack: ImagesURLStack = .init()
-        
-        if count == 1 {
-            if let imageURL = try? await fetchRandomImageURL(),
-               !imagesURL.contains(where: { $0 == imageURL }) {
-                imagesURL.append(imageURL)
-                await stack.append([imageURL])
-                
-            } else {
-                await stack.append(await get(count: 1))
-            }
-        } else {
-            return await Task { () -> [String] in
-                var temp = [String]()
-                
-                await temp.append(contentsOf: get(count: count - 1))
-                if let imageURL = try? await fetchRandomImageURL(),
-                   !imagesURL.contains(where: { $0 == imageURL }) {
-                    imagesURL.append(imageURL)
-                    temp.append(imageURL)
-                } else {
-                    temp.append(contentsOf: await get(count: 1))
+    private func fetchUniqueImages(from imagesURLs: [String]) async {
+        return await withThrowingTaskGroup(of: Void.self, body: { group -> Void in
+            let stack: ImagesStack = .init()
+            
+            imagesURLs.forEach { imageURL in
+                group.addTask { [weak self] in
+                    if let image = try await self?.fetchImage(from: imageURL) {
+                        await stack.append(image)
+                    }
                 }
-                return temp
-            }.value
+            }
+            
+            try? await group.waitForAll()
+        })
+    }
+    
+    private func fetchUniqueImagesURLs() async -> [String] {
+        return await withThrowingTaskGroup(of: Void.self, body: { group -> [String] in
+            let stack: OptionalsImagesUrls = .init()
+            
+            while await stack.urls.count <= Constant.Manager.Network.maxUniqueImagesCount {
+                if await stack.taskCount >= Constant.Manager.Network.maxActiveTaskOnGroup {
+                    try? await group.waitForAll()
+                }
+                
+                group.addTask(priority: .utility) { [weak self] in
+                    await stack.incrementTaskCount()
+                    
+                    if let urlString = try await self?.fetchRandomImageURL(),
+                       URL(string: urlString) != nil,
+                       await !stack.urls.contains(urlString) {
+                            await stack.append(urlString)
+                    }
+                    
+                    await stack.decrementTaskCount()
+                }
+            }
+            
+            group.cancelAll()
+            
+            return await stack.fetchURLs()
+        })
+    }
+    
+    // TODO: Добавить возможность загружать определенное количество URL(добавить параметр count)
+    func fetchRandomCarImages() async -> [String] {
+        return await withTaskGroup(of: Void.self, body: { group -> [String] in
+            let stack = ImagesURLStack()
+            
+           (0...19).forEach { index in
+                group.addTask(priority: .utility) { [weak self] in
+                    if let urlString = try? await self?.fetchRandomImageURL(),
+                       URL(string: urlString) != nil {
+                            await stack.append([urlString])
+                    }
+                }
+            }
+            
+            await group.waitForAll()
+            
+            return await stack.urlStrings
+        })
+    }
+    
+    func getImage(for urlString: String) -> UIImage? {
+        if let image = imageCache.image(withIdentifier: urlString) {
+            return image
+        } else {
+            Task {
+                let _ = try? await fetchImage(from: urlString)
+            }
+            return UIImage.logo
         }
-        
-        return await stack.urlStrings
     }
 
     // MARK: Private methods
@@ -126,13 +179,14 @@ final class NetworkManagerImpl: NetworkManager {
         }
     }
     
+    
     private func fetchImage(from urlString: String) async throws -> UIImage? {
         try await withUnsafeThrowingContinuation { continuation in
             if let image = imageCache.image(withIdentifier: urlString) {
                 return continuation.resume(returning: image)
             }
             
-            AF.request(urlString).cacheResponse(using: imageCacher).responseImage { [weak self] response in
+            AF.request(urlString).responseImage { [weak self] response in
                 switch response.result {
                     case .success(let image):
                         self?.imageCache.add(image, withIdentifier: urlString)
@@ -140,15 +194,9 @@ final class NetworkManagerImpl: NetworkManager {
                         
                     case .failure(let error):
                         if error.isInvalidURLError {
-                            guard let url = URL(string: urlString)
-                            else {
-                                print(NetworkManagerError.badURL, urlString)
-                                return continuation.resume(throwing: NetworkManagerError.badURL)
-                            }
-                            URLSession.shared.dataTask(with: url) { (data, response, error) in
-                                guard let data = data else { return continuation.resume(throwing: NetworkManagerError.badData) }
-                                return continuation.resume(returning: UIImage(data: data))
-                            }
+                            #warning("TODO: разобраться с битыми URL")
+                            print(error.localizedDescription)
+                            return continuation.resume(throwing: error)
                         } else {
                             print(error.localizedDescription)
                             return continuation.resume(throwing: error)
@@ -156,14 +204,6 @@ final class NetworkManagerImpl: NetworkManager {
                 }
             }
         }
-    }
-    
-    
-    private func fetchImageUsingDefaultInstrument(from urlString: String) async throws -> UIImage? {
-        guard let url = URL(string: urlString) else { throw NetworkManagerError.badURL }
-        let (data, _) = try await URLSession.shared.data(from: url)
-        guard let image = UIImage(data: data) else { throw NetworkManagerError.badData }
-        return image
     }
     
 }

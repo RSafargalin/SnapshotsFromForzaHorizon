@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+// TODO: Прикрутить документацию
 protocol CarCell: UICollectionViewCell {
     
     static var identifier: String { get }
@@ -22,7 +23,7 @@ final class CarCellImpl: UICollectionViewCell, CarCell {
     
     // MARK: – Public
     
-    static var identifier: String = "CarCell"
+    static let identifier: String = "CarCell"
     
     // MARK: – Private
     

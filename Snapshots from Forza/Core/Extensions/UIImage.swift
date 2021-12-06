@@ -8,8 +8,14 @@
 import Foundation
 import UIKit
 
+// TODO: Прикрутить документацию
 extension UIImage {
     
     static let logo: UIImage? = UIImage(named: "logo")
     
+    enum Screens {
+        
+        static let cars: UIImage? = UIImage(systemName: "car.2")
+        
+    }
 }

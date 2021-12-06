@@ -10,16 +10,31 @@ import UIKit
 
 final class LaunchViewController: UIViewController {
     
+    private typealias GlobalFontsSettings = Constant.Screens.Launch.FontSettings
+    private typealias LaunchVCConstraintsConstants = LaunchViewController.Constants.Constraints
+    
+    private enum Constants {
+        enum Constraints {
+            static let defaultLeft: CGFloat = 16,
+                       defaultRight: CGFloat = -16,
+                       spacingBetweenIndicatorAndLogo: CGFloat = 0,
+                       spacingBetweenDescriptionAndIndicator: CGFloat = 25
+        }
+        
+        enum Sizes {
+            static let defaultLogoHeight: CGFloat = 234
+        }
+    }
+    
     // MARK: - Properties
     
     // MARK: – Public
     
-    var dataStore: LaunchDataStore = LaunchDataStoreImpl()
+    let dataStore: LaunchDataStore
     
     // MARK: – Private
     
-    private let networkManager: NetworkManager = NetworkManagerImpl()
-    private var router: LaunchScreenRouting = NavigationCenter.main
+    private var core: LaunchScreenCore = Core.main
     
     // MARK: - Views
     
@@ -33,12 +48,13 @@ final class LaunchViewController: UIViewController {
         return imageView
     }()
     
+    // TODO: Добавить локализацию
     private lazy var descriptionLabel: UILabel = {
         let label: UILabel = UILabel()
         label.numberOfLines = 0
         label.text = "Минуточку, загружаем изображения...\nПри хорошем интернет-соединении загрузка занимает около 20 секунд"
         label.textColor = .darkGray
-        label.font = .systemFont(ofSize: 14)
+        label.font = .systemFont(ofSize: GlobalFontsSettings.Sizes.description)
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -53,13 +69,24 @@ final class LaunchViewController: UIViewController {
         return indicatorView
     }()
     
+    // MARK: - Init
+    
+    init(with dataStore: LaunchDataStore) {
+        self.dataStore = dataStore
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
         
-        router.launchViewController = self
+        core.launchViewController = self
         
         loadingImages()
     }
@@ -68,36 +95,12 @@ final class LaunchViewController: UIViewController {
     
     private func loadingImages() {
         Task {
-            dataStore.images = await networkManager.fetchCarsImages()
+            await core.downloadUniqueImages()
+            dataStore.images = await core.downloadFirstImagesPart()
             DispatchQueue.main.async {
-                self.router.routeTo()
-            }
-            
-        }
-    }
-    
-    // FIXME: Вынести в отдельный метод в NetworkManager
-    private func fetchImages() async -> [UIImage] {
-        
-        actor ImagesStack {
-            var images: [UIImage] = []
-            
-            func append(_ image: UIImage) {
-                images.append(image)
+                self.core.start()
             }
         }
-        
-        let imagesStack: ImagesStack = .init()
-        
-        let task = Task { () -> [UIImage] in
-            for _ in 0...19 {
-                let image = await networkManager.fetchRandomCarImage()
-                await imagesStack.append(image)
-            }
-            return await imagesStack.images
-        }
-        
-        return await task.value
     }
     
     // MARK: – UI
@@ -112,7 +115,7 @@ final class LaunchViewController: UIViewController {
         let horizontalSpacing: CGFloat = (systemMinimumLayoutMargins.leading + systemMinimumLayoutMargins.trailing) * 2
         
         let defaultLogoSize = CGSize(width: (view.bounds.width - horizontalSpacing),
-                                     height: 234)
+                                     height: LaunchViewController.Constants.Sizes.defaultLogoHeight)
         
         NSLayoutConstraint.activate([
             logo.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -121,16 +124,16 @@ final class LaunchViewController: UIViewController {
             logo.heightAnchor.constraint(equalToConstant: defaultLogoSize.height),
             
             activityIndicator.topAnchor.constraint(equalTo: logo.bottomAnchor,
-                                                   constant: 0),
+                                                   constant: LaunchVCConstraintsConstants.spacingBetweenIndicatorAndLogo),
             activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             descriptionLabel.topAnchor.constraint(equalTo: activityIndicator.bottomAnchor,
-                                                  constant: 25),
+                                                  constant: LaunchVCConstraintsConstants.spacingBetweenDescriptionAndIndicator),
             descriptionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor,
-                                                      constant: 16),
+                                                      constant: LaunchVCConstraintsConstants.defaultLeft),
             descriptionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor,
-                                                       constant: -16)
+                                                       constant: LaunchVCConstraintsConstants.defaultRight)
         ])
     }
     
